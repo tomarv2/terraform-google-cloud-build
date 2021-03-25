@@ -1,0 +1,12 @@
+steps:
+
+- name: 'gcr.io/cloud-builders/gsutil'
+  id: copy_build_cache
+  # we use rsync and not cp so that this step doesn't fail the first time it's run
+  args: ['rsync', 'gs://${_CACHE_BUCKET}/', '/build_cache']
+  volumes:
+  - name: 'build_cache'
+    path: '/build_cache'
+
+
+timeout: 1800s

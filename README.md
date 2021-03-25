@@ -79,7 +79,7 @@ tf -cloud gcloud destroy -var='teamid=foo' -var='prjid=bar'
 >
 > For more information refer to [Terraform documentation](https://www.terraform.io/docs/language/values/variables.html)
 
-##### Storage Bucket(with optional enable website)
+#### Storage Bucket(with optional enable website)
 ```
 module "storage_bucket" {
   source = "../"
