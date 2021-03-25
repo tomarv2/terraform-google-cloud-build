@@ -1,12 +1,12 @@
 <p align="center">
-    <a href="https://github.com/tomarv2/terraform-template/actions/workflows/security_scans.yml" alt="Security Scans">
-        <img src="https://github.com/tomarv2/terraform-template/actions/workflows/security_scans.yml/badge.svg?branch=main" /></a>
+    <a href="https://github.com/tomarv2/terraform-google-cloud-build/actions/workflows/security_scans.yml" alt="Security Scans">
+        <img src="https://github.com/tomarv2/terraform-google-cloud-build/actions/workflows/security_scans.yml/badge.svg?branch=main" /></a>
     <a href="https://www.apache.org/licenses/LICENSE-2.0" alt="license">
-        <img src="https://img.shields.io/github/license/tomarv2/terraform-template" /></a>
-    <a href="https://github.com/tomarv2/terraform-template/tags" alt="GitHub tag">
-        <img src="https://img.shields.io/github/v/tag/tomarv2/terraform-template" /></a>
-    <a href="https://github.com/tomarv2/terraform-template/pulse" alt="Activity">
-        <img src="https://img.shields.io/github/commit-activity/m/tomarv2/terraform-template" /></a>
+        <img src="https://img.shields.io/github/license/tomarv2/terraform-google-cloud-build" /></a>
+    <a href="https://github.com/tomarv2/terraform-google-cloud-build/tags" alt="GitHub tag">
+        <img src="https://img.shields.io/github/v/tag/tomarv2/terraform-google-cloud-build" /></a>
+    <a href="https://github.com/tomarv2/terraform-google-cloud-build/pulse" alt="Activity">
+        <img src="https://img.shields.io/github/commit-activity/m/tomarv2/terraform-google-cloud-build" /></a>
     <a href="https://stackoverflow.com/users/6679867/tomarv2" alt="Stack Exchange reputation">
         <img src="https://img.shields.io/stackexchange/stackoverflow/r/6679867"></a>
     <a href="https://discord.gg/XH975bzN" alt="chat on Discord">
@@ -15,15 +15,15 @@
         <img src="https://img.shields.io/twitter/follow/varuntomar2019?style=social&logo=twitter"></a>
 </p>
 
-# Terraform module to create Google
+# Terraform module to create Google Cloud Build
 
 # Versions
 
 - Module tested for Terraform 0.14.
-- Google provider version [3.58.0](https://registry.terraform.io/providers/hashicorp/google/latest)
+- Google provider version [3.60.0](https://registry.terraform.io/providers/hashicorp/google/latest)
 - `main` branch: Provider versions not pinned to keep up with Terraform releases
-- `tags` releases: Tags are pinned with versions (use <a href="https://github.com/tomarv2/terraform-template/tags" alt="GitHub tag">
-        <img src="https://img.shields.io/github/v/tag/tomarv2/terraform-template" /></a> in your releases)
+- `tags` releases: Tags are pinned with versions (use <a href="https://github.com/tomarv2/terraform-google-cloud-build/tags" alt="GitHub tag">
+        <img src="https://img.shields.io/github/v/tag/tomarv2/terraform-google-cloud-build" /></a> in your releases)
 
 **NOTE:** 
 
@@ -53,17 +53,17 @@ export TF_GCLOUD_CREDENTIALS=<gcp credentials.json>
 
 - Run and verify the output before deploying:
 ```
-tf -cloud gcloud plan 
+tf -cloud gcloud plan -var='teamid=foo' -var='prjid=bar'
 ```
 
 - Run below to deploy:
 ```
-tf -cloud gcloud apply 
+tf -cloud gcloud apply -var='teamid=foo' -var='prjid=bar' 
 ```
 
 - Run below to destroy:
 ```
-tf -cloud gcloud destroy
+tf -cloud gcloud destroy -var='teamid=foo' -var='prjid=bar'
 ```
 
 > ❗️ **Important** - Two variables are required for using `tf` package:
@@ -98,17 +98,3 @@ module "storage_bucket" {
 ```
 
 Please refer to examples directory [link](examples) for references.
-
-## Requirements
-
-
-## Permissions
-
-Service account with the following roles is required:
-
-- [`roles/storage.admin`](https://cloud.google.com/iam/docs/understanding-roles#cloud-storage-roles)
-
-## Project APIs
-
-Following APIs must be enabled on the project:
-- `storage-api.googleapis.com`
