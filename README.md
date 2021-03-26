@@ -83,7 +83,7 @@ tf -cloud gcloud destroy -var='teamid=foo' -var='prjid=bar'
 >
 > For more information refer to [Terraform documentation](https://www.terraform.io/docs/language/values/variables.html)
 
-#### Simple codebuild
+#### Simple Cloud Build
 ```
 module "cloud_build" {
   source = "../"
@@ -100,10 +100,32 @@ module "cloud_build" {
 
 Please refer to examples directory [link](examples) for references.
 
-#### Troubleshooting
+## Permissions required for Cloud Build
 
-- Cloud Build uses a special service account: [PROJECT_NUMBER]@cloudbuild.gserviceaccount.com.
+Depending on your requirement set the permissions. 
 
-- [Cloud Build service account](https://cloud.google.com/build/docs/cloud-build-service-account)
+:point_right: Service account used by Cloud Build:
 
-- [Configuring access for Cloud Build Service Account](https://cloud.google.com/build/docs/securing-builds/configure-access-for-cloud-build-service-account)
+```
+CLOUDBUILD_SA="$(gcloud projects describe $PROJECT_ID --format 'value(projectNumber)')@cloudbuild.gserviceaccount.com"
+```
+
+:point_right: Assign `editor` permission to the project:
+
+```
+gcloud projects add-iam-policy-binding $PROJECT_ID --member serviceAccount:$CLOUDBUILD_SA --role roles/editor
+```
+
+## Enable below apis for Cloud Build
+
+Following APIs must be enabled on the project:
+- `compute.googleapis.com`
+- `cloudbuild.googleapis.com`
+
+## Troubleshooting
+
+:point_right: Cloud Build uses a special service account: [PROJECT_NUMBER]@cloudbuild.gserviceaccount.com.
+
+:point_right: [Cloud Build service account](https://cloud.google.com/build/docs/cloud-build-service-account)
+
+:point_right: [Configuring access for Cloud Build Service Account](https://cloud.google.com/build/docs/securing-builds/configure-access-for-cloud-build-service-account)
