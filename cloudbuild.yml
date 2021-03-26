@@ -32,5 +32,15 @@ steps:
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "${_GCR_REGION}.gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA"]
 
+  - name: 'gcr.io/cloud-builders/gsutil'
+    id: list_buckets_in_project
+    args: ['ls']
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: list_cloud_functions
+    args: ['functions', 'list', '--regions=us-west2']
+
+timeout: 1200s
+
 substitutions:
   _GCR_REGION: us

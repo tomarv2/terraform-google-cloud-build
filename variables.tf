@@ -34,11 +34,17 @@ variable "branch_name" {
 
 variable "repo_name" {}
 
+variable "owner_name" {}
+
 variable "build_timeout" {
   default = "120s"
 }
 
 variable "build_disabled" {
-  default = "false"
+  default     = "false"
   description = "Whether the trigger is disabled or not. If true, the trigger will never result in a build."
+}
+
+variable "deploy_cloud_build" {
+  default = true
 }

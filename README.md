@@ -17,6 +17,10 @@
 
 # Terraform module to create Google Cloud Build
 
+> :arrow_right:  Terraform module for [AWS CodeBuild](https://registry.terraform.io/modules/tomarv2/codebuild/aws/latest)
+
+> :arrow_right:  Terraform module for [AWS CodePipeline](https://registry.terraform.io/modules/tomarv2/codepipeline/aws/latest)
+
 # Versions
 
 - Module tested for Terraform 0.14.
@@ -79,22 +83,27 @@ tf -cloud gcloud destroy -var='teamid=foo' -var='prjid=bar'
 >
 > For more information refer to [Terraform documentation](https://www.terraform.io/docs/language/values/variables.html)
 
-#### Storage Bucket(with optional enable website)
+#### Simple codebuild
 ```
-module "storage_bucket" {
+module "cloud_build" {
   source = "../"
 
-  deploy_bucket = true
-
-  gcp_project                 = "demo-1000"
-  uniform_bucket_level_access = true
-  versioning                  = false
-  enable_website              = false # NOTE: enable_website and enable_cors go togeather
-  enable_cors                 = false  # enable_cors is dependent on enable_website
-  # -----------------------------------
+  owner_name = "tomarv2"
+  repo_name = "terraform-google-cloud-build"
+  gcp_project = "demo-1000"
+  #-----------------------------------------------
+  # Note: Do not change teamid and prjid once set.
   teamid = var.teamid
   prjid  = var.prjid
 }
 ```
 
 Please refer to examples directory [link](examples) for references.
+
+#### Troubleshooting
+
+- Cloud Build uses a special service account: [PROJECT_NUMBER]@cloudbuild.gserviceaccount.com.
+
+- [Cloud Build service account](https://cloud.google.com/build/docs/cloud-build-service-account)
+
+- [Configuring access for Cloud Build Service Account](https://cloud.google.com/build/docs/securing-builds/configure-access-for-cloud-build-service-account)
