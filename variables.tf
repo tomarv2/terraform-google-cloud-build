@@ -48,3 +48,12 @@ variable "build_disabled" {
 variable "deploy_cloud_build" {
   default = true
 }
+
+variable "cloud_build_file" {
+  description = "Cloudbuild file path relative to root of the repository"
+  default = "cloudbuild-sample.yml"
+}
+
+variable "substitutions" {
+  default = {}
+}

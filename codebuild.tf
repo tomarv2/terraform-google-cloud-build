@@ -5,6 +5,8 @@ resource "google_cloudbuild_trigger" "default" {
   description = var.description == null ? "Terraform managed: ${var.teamid}-${var.prjid}" : var.description
   project     = var.gcp_project
 
+  // NOTE: `trigger_template` or `github` is required
+
   //  trigger_template {
   //    branch_name = var.branch_name
   //    repo_name   = var.repo_name
@@ -21,10 +23,11 @@ resource "google_cloudbuild_trigger" "default" {
     }
   }
 
-  substitutions = {
-    _FOO = "bar"
-    _BAZ = "qux"
-  }
+  substitutions = var.substitutions
+//  substitutions = {
+//    _FOO = "hello"
+//    _BAR = "world"
+//  }
 
-  filename = "cloudbuild.yml"
+  filename = var.cloud_build_file
 }

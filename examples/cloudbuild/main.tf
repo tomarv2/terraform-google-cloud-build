@@ -1,5 +1,5 @@
 module "cloud_build" {
-  source = "../"
+  source = "../../"
 
   owner_name  = "tomarv2"
   repo_name   = "terraform-google-cloud-build"

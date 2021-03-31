@@ -83,7 +83,7 @@ tf -cloud gcloud destroy -var='teamid=foo' -var='prjid=bar'
 >
 > For more information refer to [Terraform documentation](https://www.terraform.io/docs/language/values/variables.html)
 
-#### Simple Cloud Build
+#### Cloud Build
 ```
 module "cloud_build" {
   source = "../"
@@ -100,11 +100,16 @@ module "cloud_build" {
 
 Please refer to examples directory [link](examples) for references.
 
-## Permissions required for Cloud Build
+## Permissions required to get Cloud Build list
+
+```
+cloudbuild.builds.get
+cloudbuild.builds.list
+```
 
 Depending on your requirement set the permissions. 
 
-:point_right: Service account used by Cloud Build:
+:point_right: Get `Service account` used by Cloud Build:
 
 ```
 CLOUDBUILD_SA="$(gcloud projects describe $PROJECT_ID --format 'value(projectNumber)')@cloudbuild.gserviceaccount.com"
