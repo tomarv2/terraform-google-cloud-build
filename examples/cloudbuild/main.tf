@@ -17,8 +17,8 @@ provider "google" {
 module "cloud_build" {
   source = "../../"
 
-  owner_name  = "tomarv2"
-  repo_name   = "terraform-google-cloud-build"
+  owner_name = "tomarv2"
+  repo_name  = "terraform-google-cloud-build"
   #-----------------------------------------------
   # Note: Do not change teamid and prjid once set.
   teamid = var.teamid
