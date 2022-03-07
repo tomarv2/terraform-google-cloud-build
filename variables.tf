@@ -9,42 +9,46 @@ variable "prjid" {
 }
 
 variable "description" {
-  type        = any
+  type        = string
   description = "Describe the codebuild"
   default     = null
 }
 
 variable "name" {
-  default = null
+  description = "Name of the codebuild"
+  default     = null
+  type        = string
 }
 
 variable "branch_name" {
-  default = "main"
+  description = "Branch name"
+  default     = "main"
+  type        = string
 }
 
-variable "repo_name" {}
-
-variable "owner_name" {}
-
-variable "build_timeout" {
-  default = "120s"
+variable "repo_name" {
+  description = "Branch name"
+  type        = string
 }
 
-variable "build_disabled" {
-  default     = "false"
-  description = "Whether the trigger is disabled or not. If true, the trigger will never result in a build."
+variable "owner_name" {
+  description = "Branch name"
+  type        = string
 }
-
 variable "deploy_cloud_build" {
-  default = true
-  type    = bool
+  description = "Feature flag"
+  default     = true
+  type        = bool
 }
 
 variable "cloud_build_file" {
   description = "Cloudbuild file path relative to root of the repository"
   default     = "cloudbuild-sample.yml"
+  type        = string
 }
 
 variable "substitutions" {
-  default = {}
+  description = "Substitutions"
+  default     = {}
+  type        = map(any)
 }
