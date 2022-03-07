@@ -1,59 +1,54 @@
 variable "teamid" {
-  description = "(Required) Name of the team/group e.g. devops, dataengineering. Should not be changed after running 'tf apply'"
+  description = "Name of the team/group e.g. devops, dataengineering. Should not be changed after running 'tf apply'"
+  type        = string
 }
 
 variable "prjid" {
-  description = "(Required) Name of the project/stack e.g: mystack, nifieks, demoaci. Should not be changed after running 'tf apply'"
-}
-
-variable "gcp_project" {
-  description = "gcp project to use"
-}
-
-variable "credentials" {
-  default = "~/.gcloud/credentials.json"
-}
-
-variable "gcp_region" {
-  default = "us-central1"
+  description = "Name of the project/stack e.g: mystack, nifieks, demoaci. Should not be changed after running 'tf apply'"
+  type        = string
 }
 
 variable "description" {
-  type        = any
+  type        = string
   description = "Describe the codebuild"
   default     = null
 }
 
 variable "name" {
-  default = null
+  description = "Name of the codebuild"
+  default     = null
+  type        = string
 }
 
 variable "branch_name" {
-  default = "main"
+  description = "Branch name"
+  default     = "main"
+  type        = string
 }
 
-variable "repo_name" {}
-
-variable "owner_name" {}
-
-variable "build_timeout" {
-  default = "120s"
+variable "repo_name" {
+  description = "Branch name"
+  type        = string
 }
 
-variable "build_disabled" {
-  default     = "false"
-  description = "Whether the trigger is disabled or not. If true, the trigger will never result in a build."
+variable "owner_name" {
+  description = "Branch name"
+  type        = string
 }
-
 variable "deploy_cloud_build" {
-  default = true
+  description = "Feature flag"
+  default     = true
+  type        = bool
 }
 
 variable "cloud_build_file" {
   description = "Cloudbuild file path relative to root of the repository"
-  default = "cloudbuild-sample.yml"
+  default     = "cloudbuild-sample.yml"
+  type        = string
 }
 
 variable "substitutions" {
-  default = {}
+  description = "Substitutions"
+  default     = {}
+  type        = map(any)
 }
