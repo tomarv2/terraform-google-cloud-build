@@ -1,21 +1,11 @@
 variable "teamid" {
-  description = "(Required) Name of the team/group e.g. devops, dataengineering. Should not be changed after running 'tf apply'"
+  description = "Name of the team/group e.g. devops, dataengineering. Should not be changed after running 'tf apply'"
+  type        = string
 }
 
 variable "prjid" {
-  description = "(Required) Name of the project/stack e.g: mystack, nifieks, demoaci. Should not be changed after running 'tf apply'"
-}
-
-variable "gcp_project" {
-  description = "gcp project to use"
-}
-
-variable "credentials" {
-  default = "~/.gcloud/credentials.json"
-}
-
-variable "gcp_region" {
-  default = "us-central1"
+  description = "Name of the project/stack e.g: mystack, nifieks, demoaci. Should not be changed after running 'tf apply'"
+  type        = string
 }
 
 variable "description" {
@@ -47,11 +37,12 @@ variable "build_disabled" {
 
 variable "deploy_cloud_build" {
   default = true
+  type    = bool
 }
 
 variable "cloud_build_file" {
   description = "Cloudbuild file path relative to root of the repository"
-  default = "cloudbuild-sample.yml"
+  default     = "cloudbuild-sample.yml"
 }
 
 variable "substitutions" {
