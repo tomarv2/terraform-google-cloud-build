@@ -160,3 +160,50 @@ Following APIs must be enabled on the project:
 :point_right: [Cloud Build service account](https://cloud.google.com/build/docs/cloud-build-service-account)
 
 :point_right: [Configuring access for Cloud Build Service Account](https://cloud.google.com/build/docs/securing-builds/configure-access-for-cloud-build-service-account)
+
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.1 |
+| <a name="requirement_google"></a> [google](#requirement\_google) | ~> 4.12.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_google"></a> [google](#provider\_google) | ~> 4.12.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [google_cloudbuild_trigger.default](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloudbuild_trigger) | resource |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_branch_name"></a> [branch\_name](#input\_branch\_name) | Branch name | `string` | `"main"` | no |
+| <a name="input_cloud_build_file"></a> [cloud\_build\_file](#input\_cloud\_build\_file) | Cloudbuild file path relative to root of the repository | `string` | `"cloudbuild-sample.yml"` | no |
+| <a name="input_deploy_cloud_build"></a> [deploy\_cloud\_build](#input\_deploy\_cloud\_build) | Feature flag | `bool` | `true` | no |
+| <a name="input_description"></a> [description](#input\_description) | Describe the codebuild | `string` | `null` | no |
+| <a name="input_name"></a> [name](#input\_name) | Name of the codebuild | `string` | `null` | no |
+| <a name="input_owner_name"></a> [owner\_name](#input\_owner\_name) | Branch name | `string` | n/a | yes |
+| <a name="input_prjid"></a> [prjid](#input\_prjid) | Name of the project/stack e.g: mystack, nifieks, demoaci. Should not be changed after running 'tf apply' | `string` | n/a | yes |
+| <a name="input_repo_name"></a> [repo\_name](#input\_repo\_name) | Branch name | `string` | n/a | yes |
+| <a name="input_substitutions"></a> [substitutions](#input\_substitutions) | Substitutions | `map(any)` | `{}` | no |
+| <a name="input_teamid"></a> [teamid](#input\_teamid) | Name of the team/group e.g. devops, dataengineering. Should not be changed after running 'tf apply' | `string` | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_codebuild_project"></a> [codebuild\_project](#output\_codebuild\_project) | Google codebuild project |
+| <a name="output_codebuild_trigger_id"></a> [codebuild\_trigger\_id](#output\_codebuild\_trigger\_id) | Google codebuild trigger id |
+<!-- END_TF_DOCS -->
